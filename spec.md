@@ -89,9 +89,9 @@ The college accommodation laundry tracker will have a simple and intuitive user 
     <td>N/A</td>
   </tr>
   <tr>
-    <td><code>laundry/get_availability</code><br /><br />Returns the availability of all laundry machines for a specific date.</td>
+    <td><code>user/laundry/bookings</code><br /><br />Returns the bookings of a specific laundry machine. Email addresses are omitted from the bookings as anti-pervert measures.</td>
     <td style="font-weight: bold; color: blue;">GET</td>
-    <td><b>Body Parameters:</b><br /><code>( date )</code><br /><br /><b>Return type if no error:</b><br /><code>{ laundry_machines }</code></td>
+    <td><b>Body Parameters:</b><br /><code>( date )</code><br /><br /><b>Return type if no error:</b><br /><code>{ bookings }</code></td>
     <td>
       <b>400 Error</b> when:
       <ul>
@@ -100,7 +100,7 @@ The college accommodation laundry tracker will have a simple and intuitive user 
     </td>
   </tr>
   <tr>
-    <td><code>laundry/book</code><br /><br />Books a laundry machine for a specific date time.</td>
+    <td><code>user/laundry/book</code><br /><br />Books a laundry machine for a specific date time.</td>
     <td style="font-weight: bold; color: blue;">POST</td>
     <td><b>Body Parameters:</b><br /><code>( laundry_machine_id, date )</code><br /><br /><b>Return type if no error:</b><br /><code>{ booking_id }</code></td>
     <td>
@@ -112,7 +112,7 @@ The college accommodation laundry tracker will have a simple and intuitive user 
     </td>
   </tr>
   <tr>
-    <td><code>laundry/unbook</code><br /><br />Unbooks a laundry machine given a booking_id</td>
+    <td><code>user/laundry/unbook</code><br /><br />Unbooks a laundry machine given a booking_id</td>
     <td style="font-weight: bold; color: blue;">POST</td>
     <td><b>Body Parameters:</b><br /><code>( booking_id )</code><br /><br /><b>Return type if no error:</b><br /><code>{ }</code></td>
     <td>
@@ -123,7 +123,7 @@ The college accommodation laundry tracker will have a simple and intuitive user 
     </td>
   </tr>
   <tr>
-    <td><code>laundry/follow</code><br /><br />Follows a laundry machine given its Id. Allows the user to recieve notifications when this particular laundry machine is available.</td>
+    <td><code>user/laundry/follow</code><br /><br />Follows a laundry machine given its Id. Allows the user to recieve notifications when this particular laundry machine is available.</td>
     <td style="font-weight: bold; color: blue;">POST</td>
     <td><b>Body Parameters:</b><br /><code>( laundry_machine_id, date )</code><br /><br /><b>Return type if no error:</b><br /><code>{ }</code></td>
     <td>
@@ -134,13 +134,72 @@ The college accommodation laundry tracker will have a simple and intuitive user 
     </td>
   </tr>
     <tr>
-    <td><code>laundry/unfollow</code><br /><br />Unfollows a laundry machine given its Id. Allows the user to recieve notifications when this particular laundry machine is available.</td>
+    <td><code>user/laundry/unfollow</code><br /><br />Unfollows a laundry machine given its Id. Allows the user to recieve notifications when this particular laundry machine is available.</td>
     <td style="font-weight: bold; color: blue;">POST</td>
     <td><b>Body Parameters:</b><br /><code>( laundry_machine_id, date )</code><br /><br /><b>Return type if no error:</b><br /><code>{ }</code></td>
     <td>
       <b>400 Error</b> when:
       <ul>
         <li><code>laundry_machine_id</code> provided is invalid</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>admin/add/laundry_machine</code><br /><br />Sends a notification to the user's email address when a laundry machine in a user's list of followed laundry machines is available.</td>
+    <td style="font-weight: bold; color: blue;">POST</td>
+    <td><b>Body Parameters:</b><br /><code>( laundry_machine_id, email )</code><br /><br /><b>Return type if no error:</b><br /><code>{ }</code></td>
+    <td>
+      <b>400 Error</b> when:
+      <ul>
+        <li><code>laundry_machine_id</code> provided is invalid</li>
+        <li><code>email</code> provided is invalid</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>admin/remove/laundry_machine</code><br /><br />Sends a notification to the user's email address when a laundry machine in a user's list of followed laundry machines is available.</td>
+    <td style="font-weight: bold; color: blue;">DELETE</td>
+    <td><b>Body Parameters:</b><br /><code>( laundry_machine_id, email )</code><br /><br /><b>Return type if no error:</b><br /><code>{ }</code></td>
+    <td>
+      <b>400 Error</b> when:
+      <ul>
+        <li><code>laundry_machine_id</code> provided is invalid</li>
+        <li><code>email</code> provided is invalid</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>admin/get/users</code><br /><br />Sends a notification to the user's email address when a laundry machine in a user's list of followed laundry machines is available.</td>
+    <td style="font-weight: bold; color: blue;">GET</td>
+    <td><b>Body Parameters:</b><br /><code>( laundry_machine_id, email )</code><br /><br /><b>Return type if no error:</b><br /><code>{ }</code></td>
+    <td>
+      <b>400 Error</b> when:
+      <ul>
+        <li><code>laundry_machine_id</code> provided is invalid</li>
+        <li><code>email</code> provided is invalid</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>admin/remove/user</code><br /><br />Sends a notification to the user's email address when a laundry machine in a user's list of followed laundry machines is available.</td>
+    <td style="font-weight: bold; color: blue;">DELETE</td>
+    <td><b>Body Parameters:</b><br /><code>( laundry_machine_id, email )</code><br /><br /><b>Return type if no error:</b><br /><code>{ }</code></td>
+    <td>
+      <b>400 Error</b> when:
+      <ul>
+        <li><code>laundry_machine_id</code> provided is invalid</li>
+        <li><code>email</code> provided is invalid</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>admin/laundry/bookings</code><br /><br />Returns the bookings of a specific laundry machine. Email addresses are inlcuded for each booking, unlike the `user/laundry/bookings` variant.</td>
+    <td style="font-weight: bold; color: blue;">GET</td>
+    <td><b>Body Parameters:</b><br /><code>( date )</code><br /><br /><b>Return type if no error:</b><br /><code>{ bookings }</code></td>
+    <td>
+      <b>400 Error</b> when:
+      <ul>
+        <li><code>date</code> provided is invalid</li>
       </ul>
     </td>
   </tr>
@@ -153,6 +212,17 @@ The college accommodation laundry tracker will have a simple and intuitive user 
       <ul>
         <li><code>laundry_machine_id</code> provided is invalid</li>
         <li><code>email</code> provided is invalid</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>laundry/bookings</code><br /><br />Returns the availability of all laundry machines for a specific date.</td>
+    <td style="font-weight: bold; color: blue;">GET</td>
+    <td><b>Body Parameters:</b><br /><code>( date )</code><br /><br /><b>Return type if no error:</b><br /><code>{ laundry_machines }</code></td>
+    <td>
+      <b>400 Error</b> when:
+      <ul>
+        <li><code>date</code> provided is invalid</li>
       </ul>
     </td>
   </tr>
