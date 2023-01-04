@@ -1,4 +1,4 @@
-"A stupid mf is a dumbass who doesn't learn from their failure." -Confucius
+"A stupid mf is a dumbass who doesn't learn from their failure." - Confucius
 
 # Introduction
 The college accommodation laundry tracker is a web-based application that allows students living in college accommodation to keep track of the college's laundry machines. The application will allow students to view the availability of washing machines in their accommodation, and book a time slot to use them.
