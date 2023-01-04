@@ -42,6 +42,7 @@ The college accommodation laundry tracker will have a simple and intuitive user 
     <td>has suffix <b>machines</b></td>
     <td>Array of objects, where each object contains types of <b>machine<b/></td>
   </tr>
+<table/>
 
 
 ## Function Interface
