@@ -31,16 +31,24 @@ The college accommodation laundry tracker will have a simple and intuitive user 
     <td>Object containing email, booking_date</td>
   </tr>
   <tr>
-    <td>has suffix <b>bookings</b></td>
+    <td>named exactly <b>bookings</b></td>
     <td>Array of objects, where each object contains types of <b>booking<b/></td>
   </tr>
   <tr>
-    <td>named exactly <b>machine</b></td>
-    <td>Object containing <i>machine_id, current_status, bookings </td>
+    <td>named exactly <b>laundry_machine</b></td>
+    <td>Object containing <i>laundry_machine_id, current_status, bookings </td>
   </tr>
   <tr>
-    <td>has suffix <b>machines</b></td>
-    <td>Array of objects, where each object contains types of <b>machine<b/></td>
+    <td>named exactly <b>laundry_machines</b></td>
+    <td>Array of objects, where each object contains types of <b>laundry_machine<b/></td>
+  </tr>
+  <tr>
+    <td>named exactly <b>user</b></td>
+    <td>Object containing uId, email, nameFirst, nameLast</td>
+  </tr>
+  <tr>
+    <td>named exactly <b>users</b></td>
+    <td>Array of objects, where each object contains types of <b>user<b/></td>
   </tr>
 <table/>
 
@@ -145,55 +153,45 @@ The college accommodation laundry tracker will have a simple and intuitive user 
     </td>
   </tr>
   <tr>
-    <td><code>admin/add/laundry_machine</code><br /><br />Sends a notification to the user's email address when a laundry machine in a user's list of followed laundry machines is available.</td>
+    <td><code>admin/add/laundry_machine</code><br /><br />Adds a laundry machine to the system.</td>
     <td style="font-weight: bold; color: blue;">POST</td>
-    <td><b>Body Parameters:</b><br /><code>( laundry_machine_id, email )</code><br /><br /><b>Return type if no error:</b><br /><code>{ }</code></td>
+    <td><b>Body Parameters:</b><br /><code>( )</code><br /><br /><b>Return type if no error:</b><br /><code>{ }</code></td>
     <td>
-      <b>400 Error</b> when:
-      <ul>
-        <li><code>laundry_machine_id</code> provided is invalid</li>
-        <li><code>email</code> provided is invalid</li>
-      </ul>
+      N/A
     </td>
   </tr>
   <tr>
-    <td><code>admin/remove/laundry_machine</code><br /><br />Sends a notification to the user's email address when a laundry machine in a user's list of followed laundry machines is available.</td>
+    <td><code>admin/remove/laundry_machine</code><br /><br />Removes a laundry machine from the system.</td>
     <td style="font-weight: bold; color: blue;">DELETE</td>
-    <td><b>Body Parameters:</b><br /><code>( laundry_machine_id, email )</code><br /><br /><b>Return type if no error:</b><br /><code>{ }</code></td>
+    <td><b>Body Parameters:</b><br /><code>( laundry_machine_id )</code><br /><br /><b>Return type if no error:</b><br /><code>{ }</code></td>
     <td>
       <b>400 Error</b> when:
       <ul>
         <li><code>laundry_machine_id</code> provided is invalid</li>
-        <li><code>email</code> provided is invalid</li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td><code>admin/get/users</code><br /><br />Sends a notification to the user's email address when a laundry machine in a user's list of followed laundry machines is available.</td>
+    <td><code>admin/get/users</code><br /><br />Returns a list of all users in the system.</td>
     <td style="font-weight: bold; color: blue;">GET</td>
-    <td><b>Body Parameters:</b><br /><code>( laundry_machine_id, email )</code><br /><br /><b>Return type if no error:</b><br /><code>{ }</code></td>
+    <td><b>Body Parameters:</b><br /><code>( )</code><br /><br /><b>Return type if no error:</b><br /><code>{ }</code></td>
     <td>
-      <b>400 Error</b> when:
-      <ul>
-        <li><code>laundry_machine_id</code> provided is invalid</li>
-        <li><code>email</code> provided is invalid</li>
-      </ul>
+      N/A
     </td>
   </tr>
   <tr>
-    <td><code>admin/remove/user</code><br /><br />Sends a notification to the user's email address when a laundry machine in a user's list of followed laundry machines is available.</td>
+    <td><code>admin/remove/user</code><br /><br />Removes a user from the system.</td>
     <td style="font-weight: bold; color: blue;">DELETE</td>
-    <td><b>Body Parameters:</b><br /><code>( laundry_machine_id, email )</code><br /><br /><b>Return type if no error:</b><br /><code>{ }</code></td>
+    <td><b>Body Parameters:</b><br /><code>( email )</code><br /><br /><b>Return type if no error:</b><br /><code>{ }</code></td>
     <td>
       <b>400 Error</b> when:
       <ul>
-        <li><code>laundry_machine_id</code> provided is invalid</li>
         <li><code>email</code> provided is invalid</li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td><code>admin/laundry/bookings</code><br /><br />Returns the bookings of a specific laundry machine. Email addresses are inlcuded for each booking, unlike the `user/laundry/bookings` variant.</td>
+    <td><code>admin/laundry/bookings</code><br /><br />Returns the bookings of a specific laundry machine given a specific date. Email addresses are inlcuded for each booking, unlike the `user/laundry/bookings` variant.</td>
     <td style="font-weight: bold; color: blue;">GET</td>
     <td><b>Body Parameters:</b><br /><code>( date )</code><br /><br /><b>Return type if no error:</b><br /><code>{ bookings }</code></td>
     <td>
