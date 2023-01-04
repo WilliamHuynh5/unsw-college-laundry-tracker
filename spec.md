@@ -15,6 +15,35 @@ The college accommodation laundry tracker will have a simple and intuitive user 
 - Ability to follow a laundry machine, and recieve email notifications when it is available.
 - Send notifications when a laundry machine is available
 
+## Type Interface
+
+<table>
+  <tr>
+    <th>Variable name</th>
+    <th>Type</th>
+  </tr>
+  <tr>
+    <td>has suffix <b>id</b></td>
+    <td>Integer</td>
+  </tr>
+  <tr>
+    <td>named exactly <b>booking</b></td>
+    <td>Object containing email, booking_date</td>
+  </tr>
+  <tr>
+    <td>has suffix <b>bookings</b></td>
+    <td>Array of objects, where each object contains types of <b>booking<b/></td>
+  </tr>
+  <tr>
+    <td>named exactly <b>machine</b></td>
+    <td>Object containing <i>machine_id, current_status, bookings </td>
+  </tr>
+  <tr>
+    <td>has suffix <b>machines</b></td>
+    <td>Array of objects, where each object contains types of <b>machine<b/></td>
+  </tr>
+
+
 ## Function Interface
 
 <table>
@@ -82,14 +111,35 @@ The college accommodation laundry tracker will have a simple and intuitive user 
     </td>
   </tr>
   <tr>
+    <td><code>laundry/unbook</code><br /><br />Unbooks a laundry machine given a booking_id</td>
+    <td style="font-weight: bold; color: blue;">POST</td>
+    <td><b>Body Parameters:</b><br /><code>( booking_id )</code><br /><br /><b>Return type if no error:</b><br /><code>{ }</code></td>
+    <td>
+      <b>400 Error</b> when:
+      <ul>
+        <li><code>booking_id</code> provided is invalid</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
     <td><code>laundry/follow</code><br /><br />Follows a laundry machine given its Id. Allows the user to recieve notifications when this particular laundry machine is available.</td>
     <td style="font-weight: bold; color: blue;">POST</td>
-    <td><b>Body Parameters:</b><br /><code>( laundry_machine_id, date )</code><br /><br /><b>Return type if no error:</b><br /><code>{ booking_id }</code></td>
+    <td><b>Body Parameters:</b><br /><code>( laundry_machine_id, date )</code><br /><br /><b>Return type if no error:</b><br /><code>{ }</code></td>
     <td>
       <b>400 Error</b> when:
       <ul>
         <li><code>laundry_machine_id</code> provided is invalid</li>
-        <li><code>date</code> provided is invalid</li>
+      </ul>
+    </td>
+  </tr>
+    <tr>
+    <td><code>laundry/unfollow</code><br /><br />Unfollows a laundry machine given its Id. Allows the user to recieve notifications when this particular laundry machine is available.</td>
+    <td style="font-weight: bold; color: blue;">POST</td>
+    <td><b>Body Parameters:</b><br /><code>( laundry_machine_id, date )</code><br /><br /><b>Return type if no error:</b><br /><code>{ }</code></td>
+    <td>
+      <b>400 Error</b> when:
+      <ul>
+        <li><code>laundry_machine_id</code> provided is invalid</li>
       </ul>
     </td>
   </tr>
